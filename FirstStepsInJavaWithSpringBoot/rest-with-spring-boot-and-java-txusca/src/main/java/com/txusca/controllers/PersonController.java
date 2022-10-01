@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public class PersonController {
     private PersonServices services;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(name = "id") String id) {
+    public Person findById(@PathVariable(name = "id") Long id) {
         return services.findById(id);
     }
 
@@ -47,8 +48,9 @@ public class PersonController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable(value = "id") String id) {
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
         services.delete(id);
+        return ResponseEntity.noContent().build();
     }
     
 
