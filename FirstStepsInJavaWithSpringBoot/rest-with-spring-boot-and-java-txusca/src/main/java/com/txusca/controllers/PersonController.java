@@ -21,7 +21,7 @@ import com.txusca.services.PersonServices;
 @RestController
 // @Controller
 // @ResponseBody
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
